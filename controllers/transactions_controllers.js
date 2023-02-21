@@ -1,7 +1,21 @@
+const Transaction = require('../models/transaction')
+
+
 // @desc Get all transactions
 // @routes GET /transactions
 exports.getTransactions = (req, res, next) => {
-    res.send("GET transactions")
+    try{
+        const transactions = Transaction.find()
+        return res.status(200).json({
+            success: true,
+            data: transactions
+        })
+    } catch(err){
+        return res.status(500).json({
+            success: false,
+            error: "Server Error"
+        })
+    }
 }
 
 // @desc Add transaction
