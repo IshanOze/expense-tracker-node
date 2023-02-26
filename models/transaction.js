@@ -8,7 +8,7 @@ const TransactionSchema = new mongoose.Schema({
     },
     amount: {
         type: Number,
-        required: [true, "Please add a positive or negative number"]
+        required: [true, "Please add some amount"]
     },
     createdAt: {
         type: Date,
@@ -16,4 +16,4 @@ const TransactionSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Transaction', TransactionSchema)
+module.exports = mongoose.model("Transaction", TransactionSchema)
