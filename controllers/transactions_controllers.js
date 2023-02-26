@@ -20,8 +20,21 @@ exports.getTransactions = (req, res, next) => {
 
 // @desc Add transaction
 // @routes PORT /transactions
-exports.addTransactions = (req, res, next) => {
-    res.send("POST transactions")
+exports.addTransactions = async (req, res, next) => {
+    try{
+        const { text, amount } = req.body
+        const transaction = await Transaction.create(req.body)
+        return res.status(201).json({
+            success: true,
+            data: transaction
+,        })
+    }catch(err)
+    {
+        res.status(500).json({
+            success: false,
+            data: "Server Error"
+        })
+    }
 }
 
 // @desc Delete transactions
