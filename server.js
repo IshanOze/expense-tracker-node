@@ -13,7 +13,9 @@ app.use('/transactions', transactions)
 dotenv.config({ path: './config/config.env'})
 PORT = process.env.PORT || 5000
 
-
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
 app.get('/', (req, res) => {
     res.send("Hello from server")
